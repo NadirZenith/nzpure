@@ -1,0 +1,135 @@
+
+// Variable overrides and custom variables
+/*
+*/
+@import "_variables";
+
+// NzPure
+@import "common";                   // common
+@import "_global";                   // Base styling & custom mixins
+@import "components/_buttons";       // Button tweaks
+@import "components/_comments";      // Comment styling
+@import "components/_forms";         // Form tweaks
+@import "components/_media";         // WordPress media
+@import "components/_wp-classes";    // WordPress generated classes
+@import "layouts/_general";          // General styling
+@import "layouts/_header";           // Header styling
+@import "layouts/_sidebar";          // Sidebar styling
+@import "layouts/_footer";           // Footer styling
+@import "layouts/_pages";            // Page styling
+@import "layouts/pages/_home";       // Home page styling
+@import "layouts/_posts";            // Post styling
+
+
+#site {
+      max-width: 1100px;
+      margin: 30px auto 0;
+}
+
+body  main,
+body  aside{
+      width: 100%;
+      padding-left: 1em;
+      padding-right:  1em;
+}
+
+
+.page-header,
+.content-head{
+      margin-top: 0;
+      
+}
+.widget h3,
+.entry-title{
+      margin-bottom: 0.2em;
+}
+header .byline{
+      font-size: 80%;
+      margin-bottom: 15px;
+}
+
+header .updated{
+      color: #999;
+}
+
+.pure-img{
+      width: 100%;
+      /*height: auto;*/
+}
+
+.post-categories,
+.widget ul{
+      list-style: none;
+} 
+.post-categories{
+      display: inline-block;
+      padding: 0;
+      margin:  0;
+}
+a[rel="tag"]{
+      display: inline-block;
+      padding: 2px 3px;
+      background-color: @brand-primary;
+      color: #fff;
+}
+
+* {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+}
+
+a {
+      text-decoration: none;
+      color: @brand-primary;
+}
+a:hover,
+a:focus {
+      text-decoration: underline;
+}
+.pager{
+      padding: 0 15px;
+}
+
+body > footer{
+      text-align: center;
+      padding: 5px 0;
+      color: #999;
+}
+
+/* LAYOUT CSS */
+/*debug*/
+
+// default < 568px 
+
+// sm ≥ 568px 
+@media screen and (min-width: 35.5em){
+
+}
+// md ≥ 768px 
+@media screen and (min-width: 48em){
+
+}
+// lg ≥ 1024px
+@media screen and (min-width: 64em){
+      body  main{
+            padding-left: 2em;
+            padding-right:  2em;
+      }
+      body  aside{
+            padding:0;
+      }
+      body.has-sidebar  main{
+            width: 75%;
+            float: left;
+      }
+
+      body.has-sidebar  aside{
+            width: 25%;
+            float: left;
+      }
+}
+// xl ≥ 1280px
+@media screen and  (min-width: 80em){
+
+}
