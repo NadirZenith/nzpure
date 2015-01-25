@@ -9,8 +9,8 @@
  */
 $nzpure_includes = array(
       
-      'lib/soil/soil.php', // Soil clean up
-      'lib/roots-rewrites/roots-rewrites.php', // rewrite assets urls
+      //'lib/soil/soil.php', // Soil clean up
+      //'lib/roots-rewrites/roots-rewrites.php', // rewrite assets urls
       
       'lib/utils.php', // Utility functions
       'lib/init.php', // Initial theme setup and constants
