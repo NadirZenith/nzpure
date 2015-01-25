@@ -9,9 +9,9 @@ define( 'PURE_RESPONSIVE', TRUE );
 /**
  * Enable theme features
  */
-add_theme_support( 'soil-clean-up' );         // Enable clean up from Soil
+//add_theme_support( 'soil-clean-up' );         // Enable clean up from Soil
 //add_theme_support('soil-relative-urls');    // Enable relative URLs from Soil
-add_theme_support( 'soil-nice-search' );      // Enable /?s= to /search/ redirect from Soil
+//add_theme_support( 'soil-nice-search' );      // Enable /?s= to /search/ redirect from Soil
 add_theme_support( 'pure-gallery' );     // Enable pure thumbnails component on [gallery]
 add_theme_support( 'jquery-cdn' );            // Enable to load jQuery from the Google CDN
 add_theme_support( 'pure-cdn');            // Enable to load pure from yahoo cdn
