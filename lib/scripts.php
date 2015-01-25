@@ -16,39 +16,42 @@
  * - You're not logged in as an administrator
  */
 function pure_scripts() {
+      $template_directory_uri = get_template_directory_uri();
+
       /**
        * The build task in Grunt renames production assets with a hash
        * Read the asset names from assets-manifest.json
        */
       if ( WP_ENV === 'development' ) {
             $assets = array(
-                  'css' => '/assets/css/main.css',
-                  'js' => '/assets/js/scripts.js',
-                  'pure' => '/assets/vendor/pure/pure.css',
-                  'pure-responsive' => '/assets/vendor/pure/grids-responsive.css',
-                  'pure-debug' => '/assets/css/media-queries-debug.css',
-                  'modernizr' => '/assets/vendor/modernizr/modernizr.js',
+                  'main' => $template_directory_uri . '/assets/css/main.css',
+                  'js' => $template_directory_uri . '/assets/js/scripts.js',
+                  'pure' => $template_directory_uri . '/assets/vendor/pure/pure.css',
+                  'pure-responsive' => $template_directory_uri . '/assets/vendor/pure/grids-responsive.css',
+                  'pure-responsive-debug' => $template_directory_uri . '/assets/css/pure-responsive-debug.css',
+                  'modernizr' => $template_directory_uri . '/assets/vendor/modernizr/modernizr.js',
                   'jquery' => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js'
             );
-            wp_enqueue_style( 'pure_debug_css', $assets[ 'pure-debug' ] );
+            wp_enqueue_style( 'pure-responsive-debug', $assets[ 'pure-responsive-debug' ], array( 'pure-responsive' ) );
       } else {
-            $get_assets = file_get_contents( get_template_directory() . '/assets/manifest.json' );
+            $get_assets = file_get_contents( $template_directory_uri . '/assets/manifest.json' );
             $assets = json_decode( $get_assets, true );
             $assets = array(
-                  'css' => '/assets/css/main.min.css?' . $assets[ 'assets/css/main.min.css' ][ 'hash' ],
-                  'js' => '/assets/js/scripts.min.js?' . $assets[ 'assets/js/scripts.min.js' ][ 'hash' ],
-                  'pure' => '/assets/vendor/pure/pure-min.css',
-                  'pure-responsive' => '/assets/vendor/pure/grids-responsive-min.css',
-                  'modernizr' => '/assets/js/vendor/modernizr.min.js',
+                  'main' => $template_directory_uri . '/assets/css/main.min.css?' . $assets[ 'assets/css/main.min.css' ][ 'hash' ],
+                  'js' => $template_directory_uri . '/assets/js/scripts.min.js?' . $assets[ 'assets/js/scripts.min.js' ][ 'hash' ],
+                  'pure' => $template_directory_uri . '/assets/vendor/pure/pure-min.css',
+                  'pure-responsive' => $template_directory_uri . '/assets/vendor/pure/grids-responsive-min.css',
+                  'modernizr' => $template_directory_uri . '/assets/js/vendor/modernizr.min.js',
                   'jquery' => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
             );
       }
 
-      wp_enqueue_style( 'pure_css', get_template_directory_uri() . $assets[ 'pure' ], false, null );
+      wp_enqueue_style( 'pure', $assets[ 'pure' ], false, null );
+
       if ( PURE_RESPONSIVE ) {
-            wp_enqueue_style( 'pure_css_responsive', get_template_directory_uri() . $assets[ 'pure-responsive' ], array( 'pure_css' ), null );
+            wp_enqueue_style( 'pure-responsive', $assets[ 'pure-responsive' ], array( 'pure' ), null );
       }
-      wp_enqueue_style( 'nzpure_css', get_template_directory_uri() . $assets[ 'css' ], array( 'pure_css' ), null );
+      wp_enqueue_style( 'main', $assets[ 'main' ], array( 'pure' ), null );
 
       /**
        * jQuery is loaded using the same method from HTML5 Boilerplate:
@@ -63,12 +66,12 @@ function pure_scripts() {
                   add_filter( 'script_loader_src', 'pure_jquery_local_fallback', 10, 2 );
             }
             if ( current_theme_supports( 'pure-cdn' ) ) {
-                  wp_deregister_style( 'pure_css' );
-                  wp_enqueue_style( 'pure_css', 'http://yui.yahooapis.com/pure/0.5.0/pure-min.css' );
+                  wp_deregister_style( 'pure' );
+                  wp_enqueue_style( 'pure', 'http://yui.yahooapis.com/pure/0.5.0/pure-min.css' );
 
                   if ( PURE_RESPONSIVE ) {
-                        wp_deregister_style( 'pure_css_responsive' );
-                        wp_enqueue_style( 'pure_css_responsive', 'http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css', array( 'pure_css' ) );
+                        wp_deregister_style( 'pure-responsive' );
+                        wp_enqueue_style( 'pure-responsive', 'http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css', array( 'pure' ) );
                   }
             }
       }
@@ -77,9 +80,9 @@ function pure_scripts() {
             wp_enqueue_script( 'comment-reply' );
       }
 
-      wp_enqueue_script( 'modernizr', get_template_directory_uri() . $assets[ 'modernizr' ], array(), null, true );
+      wp_enqueue_script( 'modernizr', $assets[ 'modernizr' ], array(), null, true );
       wp_enqueue_script( 'jquery' );
-      wp_enqueue_script( 'pure_js', get_template_directory_uri() . $assets[ 'js' ], array(), null, true );
+      wp_enqueue_script( 'pure_js', $assets[ 'js' ], array(), null, true );
 }
 
 add_action( 'wp_enqueue_scripts', 'pure_scripts', 100 );
