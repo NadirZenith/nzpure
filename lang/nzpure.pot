@@ -185,26 +185,24 @@ msgid "Search"
 msgstr ""
 
 #. Theme Name of the plugin/theme
-msgid "Roots Starter Theme"
+msgid "NzPure Starter Theme"
 msgstr ""
 
 #. Theme URI of the plugin/theme
-msgid "http://roots.io/starter-theme/"
+msgid "http://nzlabs.es/wp/theme/nzpure/"
 msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Roots is a WordPress starter theme based on HTML5 Boilerplate & Bootstrap. "
-"<a href=\"https://github.com/roots/roots/contributors\">Contribute on "
-"GitHub</a>"
+"NzPure is a WordPress starter theme based on Roots and yahoo purecss "
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "Roots"
+msgid "Nadir Zenith"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "http://roots.io/"
+msgid "http://nzlabs.es/"
 msgstr ""
 
 #. Template Name of the plugin/theme
