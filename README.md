@@ -3,8 +3,8 @@
 
 # fast start
 
-      - clone into theme/
-            git clone git@github.com:NadirZenith/nzpure.git
+      - clone into wp-content/themes/
+            git clone https://github.com/NadirZenith/nzpure
 
       - install node dps
             npm install
